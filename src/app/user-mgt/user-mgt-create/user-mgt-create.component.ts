@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from '../interface/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-mgt-create',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserMgtCreateComponent implements OnInit {
 
-  constructor() { }
+
+  @Input() id: number = null;
+
+  user: User = { address: {}, company: {} };
+  constructor(
+    private us: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.user = this.us.getUserById(this.id)
+  }
+
+  createUser() {
+    this.us.addUser(this.user);
   }
 
 }
