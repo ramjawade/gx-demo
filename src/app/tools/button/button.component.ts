@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit, Output, TemplateRef, EventEmitter } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { IconComponent } from '../icon/icon.component';
 
@@ -38,9 +38,15 @@ export class ButtonComponent implements OnInit {
 
   @Input() iconTemplate: TemplateRef<IconComponent>;
 
+  @Output() onclick = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClick(evt) {
+    this.onclick.emit(evt);
   }
 
 }

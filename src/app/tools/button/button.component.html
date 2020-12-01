@@ -33,6 +33,7 @@
   [disabled]="disabled"
   [title]="title"
   [color]="theme"
+  (click)="onClick($event)"
   *ngIf="type === 'flat'"
 >
   {{ value }}

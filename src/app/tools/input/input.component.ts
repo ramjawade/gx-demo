@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 @Component({
@@ -19,6 +19,8 @@ export class InputComponent implements OnInit {
   @Input() appearance: MatFormFieldAppearance = "outline";
 
   @Input() lable = "";
+
+  @Output() valueChange = new EventEmitter();
 
   constructor() { }
 
