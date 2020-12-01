@@ -1,0 +1,51 @@
+<div fxFill class="user-list">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>{{ "Name" | titlecase }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- {{ element.symbol }} -->
+        <app-button [type]="'icon'" [iconTemplate]="menuIcon">
+          <ng-template #menuIcon>
+            <app-icon [name]="'delete'" [theme]="'warn'"></app-icon
+          ></ng-template>
+        </app-button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>edit</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- {{ element.symbol }} -->
+        <app-button [type]="'icon'" [iconTemplate]="menuIcon">
+          <ng-template #menuIcon>
+            <app-icon [name]="'edit'" [theme]="'warn'"></app-icon
+          ></ng-template>
+        </app-button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
