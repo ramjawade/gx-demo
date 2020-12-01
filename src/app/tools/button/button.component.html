@@ -1,0 +1,69 @@
+<button
+  mat-raised-button
+  [disabled]="disabled"
+  [title]="title"
+  [color]="theme"
+  [value]="value"
+  *ngIf="type === 'raised'"
+>
+  <ng-content></ng-content>
+</button>
+<button
+  mat-button
+  [disabled]="disabled"
+  [title]="title"
+  [color]="theme"
+  [value]="value"
+  *ngIf="type === 'basic'"
+>
+  <ng-content></ng-content>
+</button>
+<button
+  mat-stroked-button
+  [disabled]="disabled"
+  [title]="title"
+  [color]="theme"
+  [value]="value"
+  *ngIf="type === 'stroked'"
+>
+  <ng-content></ng-content>
+</button>
+<button
+  mat-flat-button
+  [disabled]="disabled"
+  [title]="title"
+  [color]="theme"
+  *ngIf="type === 'flat'"
+>
+  {{ value }}
+</button>
+<button
+  mat-icon-button
+  [disabled]="disabled"
+  [title]="title"
+  [color]="theme"
+  [value]="value"
+  *ngIf="type === 'icon'"
+>
+  <ng-container [ngTemplateOutlet]="iconTemplate"></ng-container>
+</button>
+<button
+  mat-fab
+  [disabled]="disabled"
+  [title]="title"
+  [color]="theme"
+  [value]="value"
+  *ngIf="type === 'fab'"
+>
+  <ng-content></ng-content>
+</button>
+<button
+  mat-mini-fab
+  [disabled]="disabled"
+  [title]="title"
+  [color]="theme"
+  [value]="value"
+  *ngIf="type === 'mini-fab'"
+>
+  <ng-content></ng-content>
+</button>
