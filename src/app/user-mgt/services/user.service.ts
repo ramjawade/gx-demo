@@ -252,8 +252,11 @@ export class UserService {
     this.userData.push(user);
   }
 
-  deleteUser() {
-
+  deleteUser(id: number): Observable<any> {
+    return new Observable((observer) => {
+      this.userData.splice(id, 1);
+      observer.next("DONE")
+    })
   }
 
   getUserById(id: number): User {
@@ -285,6 +288,10 @@ export class UserService {
         }
       }
     }
+  }
+
+  updateUser(id, user: User) {
+    this.userData[id] = user;
   }
 
 }

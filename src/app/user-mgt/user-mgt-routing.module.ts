@@ -15,6 +15,9 @@ const routes: Routes = [
   }, {
     path: 'create',
     component: UserMgtCreateComponent
+  }, {
+    path: 'edit',
+    component: UserMgtCreateComponent
   }
 ]
 

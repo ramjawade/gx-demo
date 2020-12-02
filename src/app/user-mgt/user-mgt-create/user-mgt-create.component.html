@@ -1,103 +1,150 @@
-<div fxFill class="user-mgt">
-  <div fxFlex fxLayout="column" class="user-mgt__page">
-    <div fxLayout="row" [style.padding-bottom]="'1em'">
-      <div class="row-item user-mgt__profile">
-        <span class=""> Photo</span>
+<form [formGroup]="formGroup">
+  <div fxFill class="user-mgt">
+    <div fxFlex fxLayout="column" class="user-mgt__page">
+      <div fxLayout="row" [style.padding-bottom]="'1em'">
+        <div class="row-item user-mgt__profile">
+          <span class=""> Photo</span>
+        </div>
+        <div class="row-item user-mgt__info">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Personal Information</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-between">
+              <app-input
+                fxFlex="45"
+                [lable]="'Name' | titlecase"
+                [(value)]="user.name"
+                [required]="true"
+                [formGroup]="formGroup"
+                [formControlKey]="'name'"
+              ></app-input>
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [formGroup]="formGroup"
+                [lable]="'User name' | titlecase"
+                [(value)]="user.username"
+                [formControlKey]="'userName'"
+              ></app-input>
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [formGroup]="formGroup"
+                [lable]="'Phone' | titlecase"
+                [(value)]="user.phone"
+                [formControlKey]="'userPhone'"
+              ></app-input>
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [type]="'email'"
+                [formGroup]="formGroup"
+                [lable]="'email' | titlecase"
+                [(value)]="user.email"
+                [formControlKey]="'userEmail'"
+              ></app-input>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
-      <div class="row-item user-mgt__info">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>Personal Information</mat-card-title>
-          </mat-card-header>
-          <mat-divider></mat-divider>
-          <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-between">
-            <app-input
-              fxFlex="45"
-              [lable]="'Name' | titlecase"
-              [(value)]="user.name"
-            ></app-input>
-            <app-input
-              fxFlex="45"
-              [lable]="'User name' | titlecase"
-              [(value)]="user.username"
-            ></app-input>
-            <app-input
-              fxFlex="45"
-              [lable]="'Phone' | titlecase"
-              [(value)]="user.phone"
-            ></app-input>
-            <app-input
-              fxFlex="45"
-              [lable]="'email' | titlecase"
-              [(value)]="user.email"
-            ></app-input>
-          </mat-card-content>
-        </mat-card>
+      <div fxLayout="row" [style.padding-bottom]="'1em'">
+        <div class="row-item user-mgt__address" [style.padding-right]="'1em'">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Address Information</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-between">
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [formGroup]="formGroup"
+                [lable]="'Street' | titlecase"
+                [(value)]="user.address.street"
+                [formControlKey]="'userAddressStreet'"
+              ></app-input>
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [formGroup]="formGroup"
+                [lable]="'suite' | titlecase"
+                [(value)]="user.address.suite"
+                [formControlKey]="'userAddressSuite'"
+              ></app-input>
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [formGroup]="formGroup"
+                [lable]="'city' | titlecase"
+                [(value)]="user.address.city"
+                [formControlKey]="'userAddressCity'"
+              ></app-input>
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [formGroup]="formGroup"
+                [lable]="'zipcode' | titlecase"
+                [(value)]="user.address.zipcode"
+                [formControlKey]="'userAddressZip'"
+              ></app-input>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="row-item user-mgt__company">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title> Company Information</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-between">
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [formGroup]="formGroup"
+                [lable]="'name' | titlecase"
+                [(value)]="user.company.name"
+                [formControlKey]="'userCompanyName'"
+              ></app-input>
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [formGroup]="formGroup"
+                [lable]="'Work On' | titlecase"
+                [(value)]="user.company.catchPhrase"
+                [formControlKey]="'userCompanyWork'"
+              ></app-input>
+              <app-input
+                fxFlex="45"
+                [required]="true"
+                [formGroup]="formGroup"
+                [lable]="'Bs' | titlecase"
+                [(value)]="user.company.bs"
+                [formControlKey]="'userCompanyBs'"
+              ></app-input>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
+      <app-button
+        fxLayoutAlign="end"
+        [type]="'flat'"
+        [theme]="'accent'"
+        [disabled]="formGroup.invalid"
+        (click)="createUser()"
+        *ngIf="viewMode === 'create'"
+        [value]="'submit' | uppercase"
+      ></app-button>
+      <app-button
+        fxLayoutAlign="end"
+        [type]="'flat'"
+        [theme]="'accent'"
+        *ngIf="viewMode === 'edit'"
+        [disabled]="formGroup.invalid"
+        (click)="updateUser()"
+        [value]="'Update' | uppercase"
+      ></app-button>
     </div>
-    <div fxLayout="row" [style.padding-bottom]="'1em'">
-      <div class="row-item user-mgt__address" [style.padding-right]="'1em'">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>Address Information</mat-card-title>
-          </mat-card-header>
-          <mat-divider></mat-divider>
-          <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-between">
-            <app-input
-              fxFlex="45"
-              [lable]="'Street' | titlecase"
-              [(value)]="user.address.street"
-            ></app-input>
-            <app-input
-              fxFlex="45"
-              [lable]="'suite' | titlecase"
-              [(value)]="user.address.suite"
-            ></app-input>
-            <app-input
-              fxFlex="45"
-              [lable]="'city' | titlecase"
-              [(value)]="user.address.city"
-            ></app-input>
-            <app-input
-              fxFlex="45"
-              [lable]="'zipcode' | titlecase"
-              [(value)]="user.address.zipcode"
-            ></app-input>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div class="row-item user-mgt__company">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title> Company Information</mat-card-title>
-          </mat-card-header>
-          <mat-divider></mat-divider>
-          <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-between">
-            <app-input
-              fxFlex="45"
-              [lable]="'name' | titlecase"
-              [(value)]="user.company.name"
-            ></app-input>
-            <app-input
-              fxFlex="45"
-              [lable]="'Work On' | titlecase"
-              [(value)]="user.company.catchPhrase"
-            ></app-input>
-            <app-input
-              fxFlex="45"
-              [lable]="'Bs' | titlecase"
-              [(value)]="user.company.bs"
-            ></app-input>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
-    <app-button
-      fxLayoutAlign="end"
-      [type]="'flat'"
-      [theme]="'accent'"
-      (click)="createUser()"
-      [value]="'submit' | uppercase"
-    ></app-button>
   </div>
-</div>
+</form>

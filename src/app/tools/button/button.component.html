@@ -4,6 +4,7 @@
   [title]="title"
   [color]="theme"
   [value]="value"
+  (click)="onClick($event)"
   *ngIf="type === 'raised'"
 >
   <ng-content></ng-content>
@@ -14,6 +15,7 @@
   [title]="title"
   [color]="theme"
   [value]="value"
+  (click)="onClick($event)"
   *ngIf="type === 'basic'"
 >
   <ng-content></ng-content>
@@ -24,6 +26,7 @@
   [title]="title"
   [color]="theme"
   [value]="value"
+  (click)="onClick($event)"
   *ngIf="type === 'stroked'"
 >
   <ng-content></ng-content>
@@ -44,6 +47,7 @@
   [title]="title"
   [color]="theme"
   [value]="value"
+  (click)="onClick($event)"
   *ngIf="type === 'icon'"
 >
   <ng-container [ngTemplateOutlet]="iconTemplate"></ng-container>
@@ -54,6 +58,7 @@
   [title]="title"
   [color]="theme"
   [value]="value"
+  (click)="onClick($event)"
   *ngIf="type === 'fab'"
 >
   <ng-content></ng-content>
@@ -64,6 +69,7 @@
   [title]="title"
   [color]="theme"
   [value]="value"
+  (click)="onClick($event)"
   *ngIf="type === 'mini-fab'"
 >
   <ng-content></ng-content>

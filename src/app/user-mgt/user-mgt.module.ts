@@ -8,6 +8,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { ToolsModule } from '../tools/tools.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatTableModule } from "@angular/material/table";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [UserMgtListComponent, UserMgtCreateComponent],
   imports: [
@@ -18,7 +19,9 @@ import { MatTableModule } from "@angular/material/table";
     ToolsModule,
     FlexLayoutModule,
     MatTableModule,
-    ToolsModule
+    ToolsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
 })
 export class UserMgtModule { }
