@@ -9,8 +9,14 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class IconComponent implements OnInit {
 
+  /**
+   * theme 
+   */
   @Input() theme: ThemePalette = 'primary';
 
+  /**
+   * Icon name
+   */
   @Input() name: string = '';
 
 

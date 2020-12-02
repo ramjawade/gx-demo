@@ -36,12 +36,21 @@ export class ButtonComponent implements OnInit {
    */
   @Input() value = ""
 
+  /**
+   * Only for icon type
+   */
   @Input() iconTemplate: TemplateRef<IconComponent>;
 
+  /**
+   * Click Output Event
+   */
   @Output() onclick = new EventEmitter();
 
   constructor() { }
 
+  /**
+   * @ignore
+   */
   ngOnInit(): void {
   }
 

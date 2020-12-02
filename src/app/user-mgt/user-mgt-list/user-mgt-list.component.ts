@@ -18,16 +18,27 @@ export class UserMgtListComponent implements OnInit {
     private router: Router
   ) { }
 
+  /**
+   * @ignore
+   */
   ngOnInit(): void {
     this.userService.getUserData().subscribe(data => this.dataSource = data)
   }
 
+  /**
+   * Delete user
+   * @param id 
+   */
   deleteUser(id: number) {
     this.userService.deleteUser(id).subscribe(x => {
       this.userService.getUserData().subscribe(data => this.dataSource = new MatTableDataSource(data))
     });
   }
 
+  /**
+   * Edit user 
+   * @param id 
+   */
   editUser(id: number) {
     this.router.navigate(['user-mgt', "edit"], { queryParams: { id: id } })
   }

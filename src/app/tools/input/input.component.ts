@@ -31,12 +31,24 @@ export class InputComponent implements OnInit {
    */
   @Input() appearance: MatFormFieldAppearance = "outline";
 
+  /**
+   * Lable of input
+   */
   @Input() lable = "";
 
+  /**
+   * Input types
+   */
   @Input() type: 'text' | 'number' | 'email' = 'text';
 
+  /**
+   * Required field
+   */
   @Input() required = false;
 
+  /**
+   * form inputs
+   */
   @Input() formGroup: FormGroup = null;
   @Input() control: FormControl = new FormControl();
   @Input() formControlKey: string = null;
@@ -47,6 +59,9 @@ export class InputComponent implements OnInit {
 
   constructor() { }
 
+  /**
+   * @ignore
+   */
   ngOnInit(): void {
     if (this.required) {
       this.validators.push(Validators.required);

@@ -13,7 +13,6 @@ export class UserMgtCreateComponent implements OnInit {
 
 
   id: number = null;
-
   user: User = { address: {}, company: {} };
   formGroup = new FormGroup({ "name": new FormControl() });
   viewMode: 'edit' | 'create' = "create";
@@ -24,6 +23,9 @@ export class UserMgtCreateComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
+  /**
+   * @ignore
+   */
   ngOnInit(): void {
     this.route.queryParams.subscribe(param => {
       this.user = this.us.getUserById(param.id);
@@ -35,11 +37,17 @@ export class UserMgtCreateComponent implements OnInit {
 
   }
 
+  /**
+   * Create user 
+   */
   createUser() {
     this.us.addUser(this.user);
     this.router.navigateByUrl('user-mgt/list')
   }
 
+  /**
+   * update user
+   */
   updateUser() {
     this.us.updateUser(this.id, this.user)
     this.router.navigateByUrl('user-mgt/list')

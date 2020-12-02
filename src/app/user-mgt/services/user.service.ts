@@ -242,16 +242,27 @@ export class UserService {
 
   constructor() { }
 
+  /**
+   * Get user data
+   */
   getUserData(): Observable<any> {
     return new Observable((observer) => {
       observer.next(this.userData);
     })
   }
 
+  /**
+   * Add user
+   * @param user 
+   */
   addUser(user: User) {
     this.userData.push(user);
   }
 
+  /**
+   * Delete user
+   * @param id 
+   */
   deleteUser(id: number): Observable<any> {
     return new Observable((observer) => {
       this.userData.splice(id, 1);
@@ -259,6 +270,10 @@ export class UserService {
     })
   }
 
+  /**
+   * Get Use by id
+   * @param id 
+   */
   getUserById(id: number): User {
     if (id) {
       return this.userData[id];
@@ -290,6 +305,11 @@ export class UserService {
     }
   }
 
+  /**
+   * Update existing user 
+   * @param id 
+   * @param user 
+   */
   updateUser(id, user: User) {
     this.userData[id] = user;
   }

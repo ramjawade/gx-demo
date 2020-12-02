@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html,
+body {
+  //   height: 100%;
+  box-sizing: border-box;
+}
+body {
+  padding: 1em;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
