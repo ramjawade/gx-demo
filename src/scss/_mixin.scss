@@ -1,0 +1,14 @@
+/**
+breakpoints
+
+0-600 phone
+600 - above web - Normal
+*/
+
+@mixin respond($breakpoint) {
+  @if ($breakpoint == phone) {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+}

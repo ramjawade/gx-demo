@@ -29,7 +29,7 @@ export class InputComponent implements OnInit {
   /**
    * Mat appearance of input
    */
-  @Input() appearance: MatFormFieldAppearance = "legacy";
+  @Input() appearance: MatFormFieldAppearance = "outline";
 
   /**
    * Lable of input

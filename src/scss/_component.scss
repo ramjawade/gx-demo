@@ -24,9 +24,20 @@ mat-card-content {
 // sidenav
 .mat-drawer {
   background-color: #ffffff !important;
+  width: 20%;
+  @include respond(phone) {
+    width: 100% !important;
+  }
+}
+.mat-list-text {
+  @include respond(phone) {
+    align-items: center;
+  }
 }
 
 //
-.mat-toolbar {
-  position: fixed;
-}
+// .mat-toolbar {
+//   position: fixed;
+// }
+
+//

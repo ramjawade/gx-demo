@@ -3,6 +3,7 @@ mat-grid-tile {
 }
 .page {
   height: 100%;
+  overflow: hidden;
 }
 .logo {
   height: 56px;
@@ -21,5 +22,6 @@ mat-grid-tile {
 }
 
 .outlet {
-  padding-top: 64px;
+  overflow: auto;
+  height: calc(100% - 64px);
 }

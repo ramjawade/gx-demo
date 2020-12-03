@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  showFiller = false;
+  opened = false;
   title = 'gx-demo';
   typesOfShoes = [{
     name: 'Create User',

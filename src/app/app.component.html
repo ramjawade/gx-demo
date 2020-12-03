@@ -1,14 +1,27 @@
 <mat-drawer-container fxFill autosize>
-  <mat-drawer #drawer [opened]="true" mode="side">
+  <mat-drawer #drawer [opened]="opened" mode="side">
     <div class="sidenav">
-      <div class="logo">
-        <app-icon [name]="'language'"></app-icon>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <span fxFlex></span>
+        <app-icon class="logo" [name]="'language'"></app-icon>
+        <span fxFlex></span>
+        <app-button
+          (onclick)="drawer.toggle()"
+          [type]="'icon'"
+          [iconTemplate]="menuIcons"
+        >
+          <ng-template #menuIcons>
+            <app-icon [name]="'close'"></app-icon
+          ></ng-template>
+        </app-button>
       </div>
+
       <mat-selection-list #shoes [multiple]="false">
         <mat-list-option
           *ngFor="let shoe of typesOfShoes"
           [value]="shoe"
           [routerLink]="shoe.route"
+          (click)="drawer.toggle()"
         >
           {{ shoe.name }}
         </mat-list-option>
