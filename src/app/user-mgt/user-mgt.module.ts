@@ -9,6 +9,8 @@ import { ToolsModule } from '../tools/tools.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatTableModule } from "@angular/material/table";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [UserMgtListComponent, UserMgtCreateComponent],
   imports: [
@@ -21,7 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     ToolsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
 })
 export class UserMgtModule { }
