@@ -11,5 +11,8 @@ body {
 }
 body {
   padding: 1em;
+  @include respond(phone) {
+    padding: 0em;
+  }
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
