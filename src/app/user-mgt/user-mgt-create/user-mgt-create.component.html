@@ -132,7 +132,7 @@
         [type]="'flat'"
         [theme]="'accent'"
         [disabled]="formGroup.invalid"
-        (click)="createUser()"
+        (onclick)="createUser()"
         *ngIf="viewMode === 'create'"
         [value]="'submit' | uppercase"
       ></app-button>
@@ -142,7 +142,7 @@
         [theme]="'accent'"
         *ngIf="viewMode === 'edit'"
         [disabled]="formGroup.invalid"
-        (click)="updateUser()"
+        (onclick)="updateUser()"
         [value]="'Update' | uppercase"
       ></app-button>
     </div>
