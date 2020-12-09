@@ -19,7 +19,7 @@
       <th mat-header-cell *matHeaderCellDef>Delete</th>
       <td mat-cell *matCellDef="let element; let index = index">
         <app-button
-          (onclick)="onDelete(index)"
+          (onclick)="onDelete(element.id)"
           [type]="'icon'"
           [iconTemplate]="menuIcon"
         >
@@ -33,7 +33,7 @@
       <th mat-header-cell *matHeaderCellDef>edit</th>
       <td mat-cell *matCellDef="let element; let index = index">
         <app-button
-          (onclick)="editUser(index)"
+          (onclick)="editUser(element.id)"
           [type]="'icon'"
           [iconTemplate]="menuIcon"
         >

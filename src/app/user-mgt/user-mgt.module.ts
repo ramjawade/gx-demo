@@ -25,7 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
   ],
 })
 export class UserMgtModule { }

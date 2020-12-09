@@ -1,13 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../interface/user';
+import { IUser } from '../interface/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  userData: Array<User> = [
+  userData: Array<IUser> = [
     {
       "id": 2,
       "name": "Ervin Howell",
@@ -217,10 +218,14 @@ export class UserService {
     }
   ]
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getUsers(): Observable<IUser[]> {
+    return this.http.get<IUser[]>("https://jsonplaceholder.typicode.com/users")
+  }
 
   /**
-   * Get user data
+   * Get IUserdata
    */
   getUserData(): Observable<any> {
     return new Observable((observer) => {
@@ -230,9 +235,9 @@ export class UserService {
 
   /**
    * Add user
-   * @param user 
+   * @param IUser
    */
-  addUser(user: User) {
+  addUser(user: IUser) {
     this.userData.push(user);
   }
 
@@ -251,43 +256,43 @@ export class UserService {
    * Get Use by id
    * @param id 
    */
-  getUserById(id: number): User {
-    if (id) {
-      return this.userData[id];
-    }
-    else {
-      return {
-        "id": 0,
-        "name": "",
-        "username": "",
-        "email": "",
-        "address": {
-          "street": "",
-          "suite": "",
-          "city": "",
-          "zipcode": "",
-          "geo": {
-            "lat": "-37.3159",
-            "lng": "81.1496"
-          }
-        },
-        "phone": "",
-        "website": "",
-        "company": {
-          "name": "",
-          "catchPhrase": "",
-          "bs": ""
-        }
-      }
-    }
-  }
+  // getUserById(id: number): IUser {
+  //   // if (id) {
+  //   //   return this.userData[id];
+  //   // }
+  //   // else {
+  //   //   return {
+  //   //     "id": 0,
+  //   //     "name": "",
+  //   //     "username": "",
+  //   //     "email": "",
+  //   //     "address": {
+  //   //       "street": "",
+  //   //       "suite": "",
+  //   //       "city": "",
+  //   //       "zipcode": "",
+  //   //       "geo": {
+  //   //         "lat": "-37.3159",
+  //   //         "lng": "81.1496"
+  //   //       }
+  //   //     },
+  //   //     "phone": "",
+  //   //     "website": "",
+  //   //     "company": {
+  //   //       "name": "",
+  //   //       "catchPhrase": "",
+  //   //       "bs": ""
+  //   //     }
+  //   //   }
+  //   // }
+  // }
 
   /**
-   * Update existing user 
+   * Update existing IUser
    * @param id 
-   * @param user 
+   * @param IUser
    */
-  updateUser(id, user: User) {
+  updateUser(id, user: IUser) {
     this.userData[id] = user;
   }
 

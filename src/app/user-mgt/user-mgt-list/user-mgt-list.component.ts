@@ -1,9 +1,11 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { select, Store } from '@ngrx/store';
+import { DeleteUserSuccess } from 'src/app/user.actions';
+import { adaptor } from 'src/app/user.reducer';
+import { getUsers } from 'src/app/user.selectors';
+import { IUser } from '../interface/user';
 
 @Component({
   selector: 'app-user-mgt-list',
@@ -13,20 +15,27 @@ import { UserService } from '../services/user.service';
 export class UserMgtListComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'edit'];
 
-  dataSource: MatTableDataSource<any> = new MatTableDataSource();
+  dataSource: IUser[] = [];
+
+  selectors = adaptor.getSelectors();
 
   @ViewChild("dialog") dialogTemplate: TemplateRef<any>;
   constructor(
-    private userService: UserService,
     private router: Router,
     private dialog: MatDialog,
+    private store: Store
   ) { }
+  // 
+
 
   /**
    * @ignore
    */
   ngOnInit(): void {
-    this.userService.getUserData().subscribe(data => this.dataSource = data)
+    this.store.pipe(select(getUsers)).subscribe((data: IUser[]) => {
+      console.log(data);
+      this.dataSource = data
+    });
   }
 
   /**
@@ -34,9 +43,7 @@ export class UserMgtListComponent implements OnInit {
    * @param id 
    */
   deleteUser(id: number) {
-    this.userService.deleteUser(id).subscribe(x => {
-      this.userService.getUserData().subscribe(data => this.dataSource = new MatTableDataSource(data))
-    });
+    this.store.dispatch(new DeleteUserSuccess({ id: id }))
   }
 
   /**

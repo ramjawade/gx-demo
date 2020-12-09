@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../interface/user';
+import { Store } from '@ngrx/store';
+import { CreateUserSuccess } from 'src/app/user.actions';
+import { IUser } from '../interface/user';
 import { UserService } from '../services/user.service';
+import { selectEntity } from "./../../user.selectors";
 
 @Component({
   selector: 'app-user-mgt-create',
@@ -13,14 +16,15 @@ export class UserMgtCreateComponent implements OnInit {
 
 
   id: number = null;
-  user: User = { address: {}, company: {} };
+  user: IUser = { address: {}, company: {} };
   formGroup = new FormGroup({ "name": new FormControl() });
   viewMode: 'edit' | 'create' = "create";
 
   constructor(
     private us: UserService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store
   ) { }
 
   /**
@@ -28,10 +32,10 @@ export class UserMgtCreateComponent implements OnInit {
    */
   ngOnInit(): void {
     this.route.queryParams.subscribe(param => {
-      this.user = this.us.getUserById(param.id);
       this.id = param.id;
       if (param.id) {
         this.viewMode = "edit";
+        this.store.select(selectEntity, { id: this.id }).subscribe((user) => this.user = user)
       }
     })
 
@@ -41,6 +45,7 @@ export class UserMgtCreateComponent implements OnInit {
    * Create user 
    */
   createUser() {
+    this.store.dispatch(new CreateUserSuccess({ data: this.user }))
     this.us.addUser(this.user);
     this.router.navigateByUrl('user-mgt/list')
   }
